@@ -1,0 +1,6 @@
+<div class="row">
+  <h2 *ngIf="selectedEmpName">{{selectedEmpName}}</h2>
+  <div class="col col-sm-4 col-md-4" app-display-employee *ngFor="let employee of employees"
+    [singleEmplyee]="employee"
+    (notify)="showEmployeeNameOnSelect($event)"></div>
+</div>

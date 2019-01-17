@@ -1,0 +1,140 @@
+<div class="row">
+  <div class="col col-md-8 offset-md-2 col-sm-8 offset-sm-2">
+    <h3>Template driven form</h3>
+    <form name="createEmployee" #f="ngForm" autocomplete="off"
+      (ngSubmit)="f.form.valid && saveEmployee(f)">
+      <div class="form-group">
+        <label for="name" class="form-check-label">Full Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="model.name"
+        #name="ngModel" [ngClass]="{ 'is-invalid': name.touched && name.invalid }" required/>
+
+        <div *ngIf="name.touched && name.invalid" class="invalid-feedback">
+          <div *ngIf="name.errors.required">Full Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        Contact Preference
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="model.contactPreference" id="Email"
+            value="Email" required
+            #contactPreference="ngModel"
+            [(ngModel)]="model.contactPreferencenmder">
+          <label class="form-check-label" for="Email">
+              Email
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="model.contactPreference" id="PhoneNumber"
+            value="PhoneNumber"
+            #contactPreference="ngModel" required
+            [(ngModel)]="model.contactPreference">
+          <label class="form-check-label" for="PhoneNumber">
+              Phone Number
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="col-form-label">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="model.email"
+        [class.is-valid]="email.dirty && email.valid" [email]="true"
+        #email="ngModel" [ngClass]="{ 'is-invalid': email.touched && email.invalid }" [required]="contactPreference.value=='Email'"/>
+        <div *ngIf="email.valid && email.dirty" class="valid-feedback">
+          <div>Email looks proper</div>
+        </div>
+        <div *ngIf="email.touched && email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors?.required">Email is required</div>
+          <div *ngIf="email.errors?.email">Email should be in proper format</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="model.phoneNumber"
+        #phoneNumber="ngModel" [ngClass]="{ 'is-invalid': phoneNumber.touched && phoneNumber.invalid,
+          'is-valid':  phoneNumber.dirty && phoneNumber.valid }"
+        [required]="contactPreference.value=='PhoneNumber'" />
+        <div *ngIf="phoneNumber.valid && phoneNumber.dirty" class="valid-feedback">
+          <div>Phone number look perfect</div>
+        </div>
+        <div *ngIf="phoneNumber.touched && phoneNumber.invalid" class="invalid-feedback">
+          <div *ngIf="phoneNumber.errors?.required">Phone is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="model.genmder" id="male" value="Male"
+            [(ngModel)]="model.genmder">
+          <label class="form-check-label" for="male">
+            Male
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="model.genmder" id="female" value="Female" [(ngModel)]="model.genmder">
+          <label class="form-check-label" for="female">
+            Female
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6 col-sm-6">
+          <div class="form-check">
+            <label class="form-check-label" for="isActive">
+              <input class="form-check-input" type="checkbox" id="isActive"
+                name="model.isActive"
+                [(ngModel)]="model.isActive">Is Active
+            </label>
+          </div>
+        </div>
+        <div class="form-inline col-md-6 col-sm-6">
+          <label for="department" class="mx-2">Department</label>
+          <select id="department" class="form-control"
+            name="model.department"
+            #department="ngModel" [appSelectValidator]="selectValidatorDefaultConfig"
+            [ngClass]="{'is-invalid': department.dirty && department.errors?.defaultSelected}"
+            [(ngModel)]="model.department">
+            <option *ngFor="let dept of departments" [value]="dept.id">{{dept.name}}</option>
+          </select>
+          <div *ngIf="department.dirty && department.errors?.defaultSelected" class="invalid-feedback">
+            <div *ngIf="department.errors?.defaultSelected">Choose Department</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="text" class="form-control" name="dateOfBirth" [(ngModel)]="model.dateOfBirth"
+        #dateOfBirth="ngModel" [ngClass]="{ 'is-invalid': f.submitted && dateOfBirth.invalid }"
+        id="dateOfBirth"
+        [bsConfig]="bsDatePickerConfig"
+        required bsDatepicker />
+      </div>
+      <div class="form-group">
+        <label for="password" class="col-form-label">Password</label>
+        <input type="text" class="form-control" name="password" [(ngModel)]="password"
+        id="password" #passwordData="ngModel" required
+        [ngClass]="{ 'is-invalid': passwordData.touched && passwordData.invalid }"/>
+        <div *ngIf="passwordData.valid && passwordData.dirty" class="valid-feedback">
+          <div>Password looks proper</div>
+        </div>
+        <div *ngIf="passwordData.touched && passwordData.invalid" class="invalid-feedback">
+          <div *ngIf="passwordData.errors?.required">Password is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword" class="col-form-label">Confirm Password</label>
+        <input type="text" class="form-control" name="confirmPassword" [(ngModel)]="confirmPassword"
+        id="confirmPassword" #confirmPasswordData="ngModel" required
+        [ngClass]="{ 'is-invalid': confirmPasswordData.touched && confirmPasswordData.invalid }"
+        comparePassword="password" />
+        <div *ngIf="confirmPasswordData.valid && confirmPasswordData.dirty" class="valid-feedback">
+          <div>Confirm Password looks proper</div>
+        </div>
+        <div *ngIf="confirmPasswordData.touched && confirmPasswordData.invalid" class="invalid-feedback">
+          <div *ngIf="confirmPasswordData.errors?.required">Confirm Password is required</div>
+          <div *ngIf="confirmPasswordData.errors?.notEqual">Password and confirm password dose not match</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+    </form>
+    <div class="card-text">{{model | json}}</div>
+  </div>
+</div>

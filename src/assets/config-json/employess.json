@@ -1,0 +1,79 @@
+{
+  "employee": [
+    {
+      "id": 1,
+      "name": "Mark",
+      "genmder": "Male",
+      "email": "mark@gmail.com",
+      "phoneNumber": 9038100202,
+      "contactPreference": "Phone",
+      "dateOfBirth": "10/25/88",
+      "department": "IT",
+      "isActive": "true",
+      "photoPath": "assets/images/mark.png"
+    },
+    {
+      "id": 2,
+      "name": "Suzane",
+      "genmder": "Female",
+      "email": "suzane@gmail.com",
+      "phoneNumber": 9038109099,
+      "contactPreference": "Email",
+      "dateOfBirth": "10/20/89",
+      "department": "FINANCE",
+      "isActive": "true",
+      "photoPath": "assets/images/suzane.png"
+    },
+    {
+      "id": 3,
+      "name": "Thomas",
+      "genmder": "Male",
+      "email": "thomas@gmail.com",
+      "phoneNumber": 9038109090,
+      "contactPreference": "Email",
+      "dateOfBirth": "11/12/79",
+      "department": "PAYROL",
+      "isActive": "true",
+      "photoPath": "assets/images/thomas.png"
+    },
+    {
+      "id": 4,
+      "name": "Gourge",
+      "genmder": "Male",
+      "email": "gourge@gmail.com",
+      "phoneNumber": 9079109090,
+      "contactPreference": "Phone",
+      "dateOfBirth": "09/12/83",
+      "department": "HELPDESK",
+      "isActive": "true",
+      "photoPath": "assets/images/gourge.png"
+    },
+    {
+      "id": 5,
+      "name": "Lisa",
+      "genmder": "Female",
+      "email": "lisa@gmail.com",
+      "phoneNumber": 9018502031,
+      "contactPreference": "Email",
+      "dateOfBirth": "06/22/93",
+      "department": "TESTING",
+      "isActive": "false",
+      "photoPath": "assets/images/lisa.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Michele",
+      "genmder": "Female",
+      "email": "michele@gmail.com",
+      "phoneNumber": 9018502130,
+      "contactPreference": "Phone",
+      "dateOfBirth": "04/07/91",
+      "department": "TESTING",
+      "isActive": "true",
+      "photoPath": "assets/images/michele.png"
+    }
+  ],
+  "partners": {
+    "id": 1, "name": "Kaka"
+  }
+}
